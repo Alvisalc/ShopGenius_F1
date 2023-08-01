@@ -10,7 +10,7 @@
             button.addEventListener('click', (event) => {
                 if (!confirm('Are you sure?')) {
                     event.preventDefault();
-                    window.location.assign('/contact-list');
+                    window.location.assign('/product');
                 }
             })
         }
