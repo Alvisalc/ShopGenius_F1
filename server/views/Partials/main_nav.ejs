@@ -37,8 +37,16 @@
         </li>
 
         <% if (typeof displayName=='string' && displayName) { %>
-          <li class="navbar-text">&nbsp;<i class="fas fa-lg fa-user"></i><span class="text-success">&nbsp;Welcome, <%=
+          <li class="navbar-text"><i class="fas fa-lg fa-user"></i><span class="text-success">&nbsp;Welcome, <%=
                 displayName %> </span></li>
+          <li class="nav-item ">
+            <% if (title=="Shopping Cart" ) { %>
+              <a class="nav-link active" href="/cart"> <i class="fa-solid fa-cart-shopping"></i>: <%= Cart.itemCount %>
+              </a>
+              <% } else { %>
+                <a class="nav-link" href="/cart"> <i class="fa-solid fa-cart-shopping"></i> </a>
+                <% } %>
+          </li>
           <li class="nav-item"><a href="/logout" class="nav-link"> <i class="fas fa-lg fa-sign-out-alt"></i>&nbsp;
               Logout </a></li>
           <% } else { %>

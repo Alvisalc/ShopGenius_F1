@@ -1,0 +1,90 @@
+<%- include('partials/header'); %>
+    <%- include('partials/main_nav'); %>
+
+        <div class="m-5 p-5 bg-light rounded-3 ">
+            <div class="row pt-4">
+                <div class="container-fluid py-5 col">
+                    <h1 class="f-1 fw-bold">
+                        <%= title %>
+                    </h1>
+
+                    <div class="row">
+                        <div class="col-md-11">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Items</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (let count=0; count < ProductList.length; count++){ %>
+                                        <tr>
+                                            <th scope="row">
+                                                <%= count+1 %>
+                                            </th>
+                                            <td>
+                                                <%= ProductList[count].firstName %>
+                                                    <%= ProductList[count].lastName %><br>
+                                                        <span style="font-size: small;">Service:
+                                                            <%= ProductList[count].service %>
+                                                        </span>
+
+                                            </td>
+                                            <td>
+                                                <%= ProductList[count].price.toLocaleString('en-US', { style: 'currency'
+                                                    , currency: 'USD' , minimumFractionDigits: 2, maximumFractionDigits:
+                                                    2, }); %>
+                                            </td>
+                                            <td>
+                                                <%= Cart.lines[count].quantity %>
+                                            </td>
+                                        </tr>
+                                        <% }; %>
+                                </tbody>
+                                <tfoot>
+                                    <td></td>
+                                    <td></td>
+                                    <th>Total: </th>
+                                    <td>
+                                        <%= Cart.cartPrice.toLocaleString('en-US', { style: 'currency' , currency: 'USD'
+                                            , minimumFractionDigits: 2, maximumFractionDigits: 2, }); %>
+                                    </td>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card col-md-3 ms-md-auto container-fluid m-5 p-3" style="width: 19rem;">
+                    <h5 class="card-header m-2">Order Summary</h5>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Subtotal: <%= Cart.cartPrice.toLocaleString('en-US', {
+                                    style: 'currency' , currency: 'USD' , minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2, }); %>
+                            </li>
+                            <li class="list-group-item">Tax: <%= (Cart.cartPrice * 0.13).toLocaleString('en-US', {
+                                    style: 'currency' , currency: 'USD' , minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2, }); %>
+                            </li>
+                            <li class="list-group-item">Total: <%= (Cart.cartPrice * 1.13).toLocaleString('en-US', {
+                                    style: 'currency' , currency: 'USD' , minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2, }); %>
+                            </li>
+                        </ul>
+                        <div class="d-flex align-items-center justify-content-center m-4">
+                            <a href="#" class="btn btn-primary text-white">Check Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <%- include('partials/bottom_nav'); %>
+            <%- include('partials/footer'); %>
