@@ -8,7 +8,7 @@
           <%= title %>
         </h1>
         <p class="text-center fs-5">Talents, geniuses, you name it. They are all here ready to hire!</p>
-        <% if (typeof displayName=='string' && displayName) { %>
+        <% if (typeof displayName=='string' && displayName && Role=="admin" ) { %>
 
           <!-- ADD TALENT BUTTON -->
           <div class="container d-flex align-items-center justify-content-center">
@@ -39,10 +39,14 @@
                     <div>
                       <a href="/product/individual/<%= ProductList[count]._id %>"
                         class="btn btn-light rounded-5 px-5 m-1" style="background-color: #f9c9cb;">See more</a>
-                      <a href="/product/update/<%= ProductList[count]._id %>" class="btn btn-light rounded-5 px-5 m-1"
-                        style="background-color: #f9c9cb;">Update</a>
-                      <a href="/product/delete/<%= ProductList[count]._id %>"
-                        class="btn btn-light rounded-5 px-5 m-1 del-alert" style="background-color: #f9c9cb;">Delete</a>
+                      <% if (typeof displayName=='string' && displayName && Role=="admin" ) { %>
+                        <a href="/product/update/<%= ProductList[count]._id %>" class="btn btn-light rounded-5 px-5 m-1"
+                          style="background-color: #f9c9cb;">Update</a>
+                        <a href="/product/delete/<%= ProductList[count]._id %>"
+                          class="btn btn-light rounded-5 px-5 m-1 del-alert"
+                          style="background-color: #f9c9cb;">Delete</a>
+                        <% } %>
+
                     </div>
 
                   </div>
@@ -56,5 +60,8 @@
 
 
     <%- include('partials/bottom_nav.ejs'); %>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
       <%- include('partials/footer.ejs'); %>

@@ -1,45 +1,67 @@
 <%- include('partials/header.ejs'); %>
-<%- include('partials/main_nav.ejs'); %>
+  <%- include('partials/main_nav.ejs'); %>
 
-<div class="p-5 m-5 bg-light rounded-3" >
-  <div class="container-fluid p-5 mt-5 row">
-    <h1><%= product.firstName %> <%= product.lastName %></h1>
-    <h4>Genius details</h4>
-    <% if (typeof displayName == 'string' && displayName) { %>
-      <a href="/product/add" class="btn btn-primary" role="button">
-        <i class="fas fa-plus-circle"> Add a talent</i>
-      </a>
-    <% } %>
-    <div class="d-flex flex-wrap justify-content-center">
-      <!-- import projects content from routes-->
-        <div class="col-md-7" style="min-width: 300px;"> <!--cards with border start here-->
-          <div class="card-body p-0 m-2 align-items-center">
-            <img class="img-fluid" src="../../Assets/images/<%= product.imageName%>" alt="product image" > <br>
-          </div>
-        </div>
-        <div class="col-md-4 card shadow rounded-4 border-0 m-2 p-4">
-          <div class="d-flex align-items-center" style="min-height: 180px;">
-            <div>
-              <h3><%= product.firstName %> <%= product.lastName %></h3><br>
-              <p>Description: <%= product.description %></p>
-              <p>Talent: <%= product.talent %></p>
-              <p>Service: <%= product.service %></p>
-              <p>Price: $<%= product.price %>/30 min</p>
-              <p>Remarks: <%= product.remarks %></p>
+    <div class="p-5 m-5 bg-light rounded-3">
+      <div class="container-fluid p-5 mt-5 row">
+        <h1>
+          <%= product.firstName %>
+            <%= product.lastName %>
+        </h1>
+        <h4>Genius details</h4>
+        <% if (typeof displayName=='string' && displayName && Role=="admin" ) { %>
+          <a href="/product/add" class="btn btn-primary" role="button">
+            <i class="fas fa-plus-circle"> Add a talent</i>
+          </a>
+          <% } %>
+            <div class="d-flex flex-wrap justify-content-center">
+              <!-- import projects content from routes-->
+              <div class="col-md-7" style="min-width: 300px;"> <!--cards with border start here-->
+                <div class="card-body p-0 m-2 align-items-center">
+                  <img class="img-fluid" src="../../Assets/images/<%= product.imageName%>" alt="product image"> <br>
+                </div>
+              </div>
+              <div class="col-md-4 card shadow rounded-4 border-0 m-2 p-4">
+                <div class="d-flex align-items-center" style="min-height: 180px;">
+                  <div>
+                    <h3>
+                      <%= product.firstName %>
+                        <%= product.lastName %>
+                    </h3><br>
+                    <p>Description: <%= product.description %>
+                    </p>
+                    <p>Talent: <%= product.talent %>
+                    </p>
+                    <p>Service: <%= product.service %>
+                    </p>
+                    <p>Price: $<%= product.price %>/30 min</p>
+                    <p>Remarks: <%= product.remarks %>
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <% if (typeof displayName=='string' && displayName && Role=="admin" ) { %>
+                    <a href="/product/update/<%= product._id %>" class="btn btn-light rounded-5 px-5 m-1"
+                      style="background-color: #f9c9cb;">Update</a>
+                    <a href="/product/delete/<%= product._id %>" class="btn btn-light rounded-5 px-5 m-1"
+                      style="background-color: #f9c9cb;">Delete</a>
+                    <% } %>
+                      <form action="/cart/update/<%= product._id %>" method="post">
+                        <button class="btn btn-light rounded-5 px-5 m-1" style="background-color: #f9c9cb;"
+                          type="submit">
+                          <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                      </form>
+                </div>
+
+              </div>
             </div>
-          </div>
-            <div>
-              <a href="/product/update/<%= product._id %>" class="btn btn-light rounded-5 px-5 m-1" style="background-color: #f9c9cb;">Update</a>
-              <a href="/product/delete/<%= product._id %>" class="btn btn-light rounded-5 px-5 m-1" style="background-color: #f9c9cb;">Delete</a>
-            </div>
-        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 
 
 
-<%- include('partials/bottom_nav.ejs'); %>
+    <%- include('partials/bottom_nav.ejs'); %>
 
-<%- include('partials/footer.ejs'); %>
+      <%- include('partials/footer.ejs'); %>
