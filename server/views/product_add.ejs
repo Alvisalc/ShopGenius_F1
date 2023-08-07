@@ -1,12 +1,16 @@
 <%- include('partials/header'); %>
     <%- include('partials/main_nav'); %>
 
-<%- include('partials/header');  %>
-<%- include('partials/main_nav');  %>
+<P></P>
 
-        <div class=" m-5 p-5 bg-light rounded-3 ">
-            <div class="container-fluid py-5">
-                <h1 class="fs-1">
+<div class="bg-light mx-5">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5 text-center">
+                <h1 class="display-5 fw-bold">
                     <%= title %>
                 </h1>
             </div>
@@ -15,52 +19,58 @@
             <!-- Content for the Add page -->
 
 
-            <div class="d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center" >
                 <div class="container-fluid mx-auto">
-                    <form method="post">
 
-                        <div class="mb-3 col-md-4">
+                    <form method="post">
+                    <div class="row mb-3">
+                        <div class="mb-3 col-md-6">
                             <label for="firstNameTextField" class="form-label">First Name: </label>
                             <input type="text" class="form-control" id="firstName" placeholder="Enter First Name"
                                 name="firstName" required>
                         </div>
-
-                        <div class="mb-3 col-md-4">
+                        
+                        <div class="mb-3 col-md-6">
                             <label for="lastNameTextField" class="form-label">Last Name: </label>
                             <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name"
                                 name="lastName" required>
                         </div>
+                    </div>
 
-
-                        <div class="mb-3 col-md-4">
+                    <div class="row mb-3">
+                        <div class="mb-3 col-md-6">
                             <label for="talentTextField" class="form-label">Talent: </label>
                             <input type="text" class="form-control" id="talentTextField" placeholder="Name of Talent"
                                 name="talent" required>
                         </div>
 
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label for="descriptionTextField" class="form-label">Description: </label>
-                            <input type="text" class="form-control" id="descriptionTextField" placeholder="Description"
-                                name="description" required>
+                            <textarea class="form-control" id="descriptionTextField" placeholder="Description" name="description" required></textarea>
                         </div>
+                    </div>
 
-                        <div class="mb-3 col-md-4">
+                    <div class="row mb-3">
+                        <div class="mb-3 col-md-6">
                             <label for="serviceTextField" class="form-label">Service: </label>
                             <input type="text" class="form-control" id="serviceTextField" placeholder="Service"
                                 name="service" required>
                         </div>
 
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label for="priceNumberField" class="form-label">Price: </label>
                             <input type="number" class="form-control" id="priceNumberField" placeholder="Price"
                                 name="price" required>
                         </div>
+                    </div>
 
-                        <div class="mb-3 col-md-4">
+                    <div class="row mb-3">
+                        <div class="mb-3 col-md-12">
                             <label for="remarksTextField" class="form-label">Remarks: </label>
                             <input type="text" class="form-control" id="remarksTextField" placeholder="Remarks"
-                                name="remarks" required>
+                                name="remarks">
                         </div>
+                    </div>
 
                         <div class="mb-3 col-md-4">
                             <label for="imageName" class="form-label">Select an image:</label>
@@ -74,6 +84,7 @@
                         </button>
                         <a href="/Product" class="btn btn-outline-warning"><i class="fas fa-undo"></i> Cancel</a>
                     </form>
+
                 </div>
 
 
@@ -82,6 +93,10 @@
 
         </div>
 
+        </div>
+        </div>
+        </div>
+        </div>
         <%- include('partials/bottom_nav'); %>
 
             <%- include('partials/footer'); %>

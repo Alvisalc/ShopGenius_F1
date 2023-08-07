@@ -9,9 +9,10 @@
           <div class="container-fluid py-5 text-center">
             <h1 class="display-5 fw-bold"><%= title %></h1>
           </div>
+
           <!-- Content for the Update page -->
           <form method="post">
-            <div class="row mb-3">
+            <div class="row mb-3" width: 20%; float:left">
               <div class="col-md-6">
                 <label for="firstNameTextField" class="form-label">First Name:</label>
                 <input type="text" class="form-control" id="firstNameTextField" placeholder="Enter First Name" name="firstName" value="<%= ProductList.firstName %>" required>
@@ -47,7 +48,7 @@
             <div class="row mb-3">
               <div class="col-md-12">
                 <label for="remarksTextField" class="form-label">Remarks:</label>
-                <input type="text" class="form-control" id="remarksTextField" placeholder="Remarks" name="remarks" value="<%= ProductList.remarks %>" required>
+                <input type="text" class="form-control" id="remarksTextField" placeholder="Remarks" name="remarks" value="<%= ProductList.remarks %>">
               </div>
             </div>
 
