@@ -42,8 +42,9 @@
                                             <td>
                                                 <%= Cart.lines[count].quantity %>
                                             </td>
-                                            <td><a href="/cart/delete/<%= ProductList[count]._id %>"><i
-                                                        class="fa-regular fa-trash-can" style="color: red;"></i></a>
+                                            <td><a href="/cart/delete/<%= ProductList[count]._id %>"
+                                                    class="del-cartitem-alert"><i class="fa-regular fa-trash-can"
+                                                        style="color: red;"></i></a>
                                             </td>
                                         </tr>
                                         <% }; %>
