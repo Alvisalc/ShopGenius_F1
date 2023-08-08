@@ -92,13 +92,8 @@ module.exports.processAddPage = async (req, res, next) => {
     .save()
     .then((data) => {
       console.log(data);
-      // refresh the contact list
       res.redirect("/product/?addSuccess=true");
-      // alert('add popup successful')
     })
-    // .then(()=>{
-    //   alert('add popup successful')
-    // })
     .catch((err) => {
       res.status(500).send({
         message: "Something went wrong!!",

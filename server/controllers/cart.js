@@ -157,6 +157,7 @@ module.exports.processUpdateCart = async (req, res, next) => {
             { new: true }
           ).then((updatedOrder) => {
             console.log("order: " + updatedOrder);
+            res.redirect("/cart?addToCartSuccess=true")
           });
         }
       })
