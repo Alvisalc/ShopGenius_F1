@@ -265,7 +265,9 @@ module.exports.performDelete = async (req, res, next) => {
   )
     .then((order) => {
       // console.log(order);
+
       res.redirect("/cart?deleteFromCartSuccess=true");
+
     })
     .catch((err) => {
       res.status(500).send({
