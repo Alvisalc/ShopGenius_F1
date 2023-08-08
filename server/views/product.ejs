@@ -1,7 +1,5 @@
 <%- include('partials/header.ejs'); %>
   <%- include('partials/main_nav.ejs'); %>
-
-
     <div class="p-5 m-5 bg-light rounded-3">
       <div class="container-fluid p-5 row">
         <h1 class="text-center fs-1">
@@ -9,53 +7,47 @@
         </h1>
         <p class="text-center fs-5">Talents, geniuses, you name it. They are all here ready to hire!</p>
         <% if (typeof displayName=='string' && displayName && Role=="admin" ) { %>
-
           <!-- ADD TALENT BUTTON -->
           <div class="container d-flex align-items-center justify-content-center">
             <a href="/product/add" class="btn btn-primary justify-content-center mx-auto p-2" role="button">
               <i class="fas fa-plus-circle"> Add a talent</i>
             </a>
-
           </div>
-
-          <% } %>
-            <div class="d-flex flex-wrap justify-content-center">
-              <!-- import projects content from routes-->
-              <% for (let count=0; count < ProductList.length; count++){ %>
-                <div class="col-sm-4 card shadow rounded-4 border-0 m-3 p-2" style="min-width: 300px;">
-                  <!--cards with border start here-->
-                  <div class="card-body p-0 m-2 align-items-center">
-                    <div class="d-flex align-items-center" style="min-height: 180px;">
-                      <div>
-                        <img class="img-fluid" src="../../Assets/images/<%= ProductList[count].imageName%>"
-                          alt="product image"> <br>
-                        Name: <%= ProductList[count].firstName %>
-                          <%= ProductList[count].lastName %><br>
-                            Talent: <%= ProductList[count].talent %><br>
-                              Service: <%= ProductList[count].service %><br>
-                                Price: $<%= ProductList[count].price %>/30 min<br>
-                      </div>
-                    </div>
+        <% } %>
+          <div class="d-flex flex-wrap justify-content-center">
+            <!-- import projects content from routes-->
+            <% for (let count=0; count < ProductList.length; count++){ %>
+              <div class="col-sm-4 card shadow rounded-4 border-0 m-3 p-2" style="min-width: 300px;">
+                <!--cards with border start here-->
+                <div class="card-body p-0 m-2 align-items-center">
+                  <div class="d-flex align-items-center" style="min-height: 180px;">
                     <div>
-                      <a href="/product/individual/<%= ProductList[count]._id %>"
-                        class="btn btn-light rounded-5 px-5 m-1" style="background-color: #f9c9cb;">See more</a>
-                      <% if (typeof displayName=='string' && displayName && Role=="admin" ) { %>
-                        <a href="/product/update/<%= ProductList[count]._id %>" class="btn btn-light rounded-5 px-5 m-1"
-                          style="background-color: #f9c9cb;">Update</a>
-                        <a href="/product/delete/<%= ProductList[count]._id %>"
-                          class="btn btn-light rounded-5 px-5 m-1 del-alert"
-                          style="background-color: #f9c9cb;">Delete</a>
-                        <% } %>
-
+                      <img class="img-fluid" src="../../Assets/images/<%= ProductList[count].imageName%>"
+                        alt="product image"> <br>
+                      Name: <%= ProductList[count].firstName %>
+                      <%= ProductList[count].lastName %><br>
+                      Talent: <%= ProductList[count].talent %><br>
+                      Service: <%= ProductList[count].service %><br>
+                      Price: $<%= ProductList[count].price %>/30 min<br>
                     </div>
-
                   </div>
-                </div>
-                <% }; %>
-            </div>
+                  <div>
+                    <a href="/product/individual/<%= ProductList[count]._id %>"
+                      class="btn btn-light rounded-5 px-5 m-1" style="background-color: #f9c9cb;">See more</a>
+                    <% if (typeof displayName=='string' && displayName && Role=="admin" ) { %>
+                      <a href="/product/update/<%= ProductList[count]._id %>" class="btn btn-light rounded-5 px-5 m-1"
+                        style="background-color: #f9c9cb;">Update</a>
+                      <a href="/product/delete/<%= ProductList[count]._id %>"
+                        class="btn btn-light rounded-5 px-5 m-1 del-alert"
+                        style="background-color: #f9c9cb;">Delete</a>
+                    <% } %>
+                  </div>
+                </div> 
+              </div>
+            <% }; %>
+          </div>
       </div>
     </div>
     <%- include('partials/bottom_nav.ejs'); %>
-
-      <%- include('partials/footer.ejs'); %>
+    <%- include('partials/footer.ejs'); %>
 
