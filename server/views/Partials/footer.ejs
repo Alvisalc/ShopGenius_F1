@@ -15,8 +15,8 @@
     const deleteParam = urlParams.get('deleteSuccess');
     const addParam = urlParams.get('addSuccess');
     const addToCartParam = urlParams.get('addToCartSuccess');
+    const deleteFromCartParam = urlParams.get('deleteFromCartSuccess');
     if (deleteParam === 'true') {
-      // Swal.fire('Product delete successful!', '', 'success');
       Swal.fire({      
         icon: 'info',
         title: 'Product deleted!',
@@ -41,10 +41,16 @@
       Swal.fire({
         icon: 'success',
         title: 'Product added to cart!',
-        text: 'Keep calm and carry on'
+        text: 'Continue shopping'
       });
     }
-
+    else if (deleteFromCartParam === 'true'){
+      Swal.fire({
+        icon: 'info',
+        title: 'Product deleted from cart!',
+        text: 'Continue shopping'
+      });
+    }
   </script>
 </body>
 </html>
