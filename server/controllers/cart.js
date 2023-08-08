@@ -213,16 +213,61 @@ module.exports.processUpdateCart = async (req, res, next) => {
   }
 };
 
-// module.exports.performDelete = async (req, res, next) => {
-//   await Product.findByIdAndRemove(req.params.id)
-//     .then((productToDelete) => {
-//       res.redirect("/product/?deleteSuccess=true");
-//       //console.log("ID: " + productToDelete._id + " got deleted!!")
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: "Something went wrong!!",
-//         error: err,
-//       });
-//     });
-// };
+module.exports.performDelete = async (req, res, next) => {
+  let qty;
+  let perPrice;
+  let subTotPrice;
+  console.log("Start deleting ========= " + req.params.id);
+
+  await Product.findById(req.params.id)
+    .then((product) => {
+      perPrice = product.price;
+      // console.log("=======Price: " + perPrice);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Something went wrong!!",
+        error: err,
+      });
+    });
+
+  await Order.findOne({ username: req.user.username })
+    .then((order) => {
+      const linesObject = order.cart.lines.find(
+        (line) => line.productId === req.params.id
+      );
+      qty = linesObject.quantity;
+      // console.log("=======qty: " + qty);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Something went wrong!!",
+        error: err,
+      });
+    });
+
+  subTotPrice = qty * perPrice;
+  // console.log("=======subTotPrice: " + subTotPrice);
+
+  Order.findOneAndUpdate(
+    {
+      username: req.user.username,
+      "cart.lines.productId": req.params.id,
+    },
+    {
+      $pull: { "cart.lines": { productId: req.params.id } },
+      $inc: { "cart.cartPrice": -subTotPrice, "cart.itemCount": -qty }, // Subtract quantity from itemCount
+    },
+    { new: true }
+  )
+    .then((order) => {
+      // console.log(order);
+      res.redirect("/cart");
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Something went wrong!!",
+        error: err,
+      });
+    });
+};
