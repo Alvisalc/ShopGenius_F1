@@ -32,7 +32,7 @@ router.get("/", cartController.displayCart);
 /* PUT Route for processing Update Cart   - UPDATE Operation*/
 router.post("/update/:id", cartController.processUpdateCart);
 
-// /* GET to perform Deletion  - DELETE Operation*/
-// router.get('/delete/:id', requireAuth, productController.performDelete)
+/* GET to perform Deletion  - DELETE Operation*/
+router.get("/delete/:id", cartController.performDelete);
 
 module.exports = router;
