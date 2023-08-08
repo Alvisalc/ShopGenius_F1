@@ -53,6 +53,7 @@ module.exports.displayAddPage = async (req, res, next) => {
   res.render("product_add", {
     title: "Add A Talent",
     displayName: req.user ? req.user.displayName : "",
+    Role: req.user ? req.user.role : "",
   });
 };
 
@@ -118,6 +119,7 @@ module.exports.displayUpdatePage = async (req, res, next) => {
         title: "Update Product",
         ProductList: productToUpdate,
         displayName: req.user ? req.user.displayName : "",
+        Role: req.user ? req.user.role : "",
       });
     })
     .catch((err) => {

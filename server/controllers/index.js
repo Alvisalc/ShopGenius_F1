@@ -16,6 +16,7 @@ module.exports.displayHomePage = (req, res, next) => {
   res.render("index", {
     title: "ShopGenius",
     displayName: req.user ? req.user.displayName : "",
+    Role: req.user ? req.user.role : "",
   });
 };
 
@@ -30,6 +31,7 @@ module.exports.displayContactPage = (req, res, next) => {
   res.render("contact", {
     title: "Contact",
     displayName: req.user ? req.user.displayName : "",
+    Role: req.user ? req.user.role : "",
   });
 };
 
