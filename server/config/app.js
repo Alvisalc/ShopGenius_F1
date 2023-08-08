@@ -6,6 +6,7 @@ let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 let cors = require("cors");
+let fileUpload = require("express-fileupload");
 
 // modules for authentication
 let session = require("express-session");
@@ -37,6 +38,9 @@ let app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "../views"));
 app.set("view engine", "ejs");
+
+// file upload
+app.use(fileUpload());
 
 app.use(logger("dev"));
 app.use(express.json());

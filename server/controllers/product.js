@@ -1,7 +1,6 @@
 let express = require("express");
 let router = express.Router();
 
-
 let mongoose = require("mongoose");
 let jwt = require("jsonwebtoken");
 
@@ -9,7 +8,6 @@ let jwt = require("jsonwebtoken");
 let Product = require("../models/product");
 
 module.exports.displayProductList = async (req, res, next) => {
-
   await Product.find()
     .then((products) => {
       // console.log(products);
@@ -59,6 +57,15 @@ module.exports.displayAddPage = async (req, res, next) => {
 };
 
 module.exports.processAddPage = async (req, res, next) => {
+  // Get the file that was set to our field named "image"
+  const { imageName } = req.files;
+  console.log(imageName);
+  // If no image submitted, exit
+  if (!imageName) return res.sendStatus(400);
+
+  // Move the uploaded image to our upload folder
+  imageName.mv(__dirname + "/../../public/Assets/images/" + imageName.name);
+
   if (
     !req.body.firstName ||
     !req.body.lastName ||
@@ -85,7 +92,7 @@ module.exports.processAddPage = async (req, res, next) => {
     service: req.body.service,
     price: req.body.price,
     remarks: req.body.remarks,
-    imageName: req.body.imageName,
+    imageName: req.files.imageName.name,
   });
 
   await newProduct
